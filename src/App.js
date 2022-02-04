@@ -1,25 +1,46 @@
-import logo from './logo.svg';
 import './App.css';
+import { Component } from 'react';
+import { CreateBox } from './components/create-box/create-box.component';
+import { TaskList } from './components/task-list/task-list.component';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  constructor(){
+    super()
+    this.state = {
+      tasks: []
+    }
+  }
+
+  createTask = (name) => {
+    
+    const task = {
+      id: this.findMaxId() + 1,
+      name: name
+    }
+
+    this.setState({ tasks: [...this.state.tasks, task] })
+  }
+
+  removeTask = (id) => {
+    const tasks = this.state.tasks.filter(p => p.id !== id)
+    this.setState({tasks: tasks})
+  }
+
+  findMaxId = () => {
+    return this.state.tasks.length == 0 ? 0 : Math.max(...this.state.tasks.map(task => task.id))
+  }
+
+  render(){
+    return (
+      <div className="App">
+        <div id='wrapper'>
+          <h1>Todo list</h1>
+          <CreateBox createTask={this.createTask} />
+          <TaskList tasks={this.state.tasks} removeTask={this.removeTask}/>
+        </div>
+      </div>
+    )
+  }
 }
 
 export default App;

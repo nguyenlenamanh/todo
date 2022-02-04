@@ -1,0 +1,26 @@
+.create-box {
+    width: 100%;
+}
+
+.create-box input {
+    width: 70%;
+    margin-right: 3px;
+    height: 29px;
+    font-size: large;
+}
+
+.create-box button {
+    background-color: #339DFF;
+    color: #fff;
+    transition: all 0.3s;
+    border-radius: 5%;
+    border: 0;
+    height: 35px;
+    padding-bottom: 0.2px;
+}
+
+.create-box button:hover {
+    background: #fff;
+    color: #339DFF;
+    box-shadow: 0 4px 4px rgba(83, 100, 255, 0.32);
+}

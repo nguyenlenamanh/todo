@@ -1,0 +1,7 @@
+.task-list {
+    padding-top: 10px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    text-align:justify;
+    height: 270px;
+}
